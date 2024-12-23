@@ -99,8 +99,8 @@
 </script>
 
 
-<div class="w-full h-screen flex bg-ui-bg relative">
-	<div class={`h-full overflow-hidden flex flex-col justify-start items-start px-6 py-5 flex-shrink-0 border-r border-ui-br
+<div class="w-full h-screen flex relative">
+	<div class={`h-full overflow-hidden flex flex-col bg-ui-bg justify-start items-start px-6 py-5 flex-shrink-0 border-r border-ui-br
 		transition-all duration-300 ease-out
 		${$isNavOpen ? 'w-72' : 'w-[74px] px-[12px]'}`}>        
 		<Title1 title={leftNavData.title}/>
@@ -168,7 +168,7 @@
 		</div>
 		<Avatar data={leftNavData.profile}/>
 	</div>
-	<div class="flex justify-center flex-grow flex-col">
+	<div class="flex justify-center flex-grow flex-col bg-ui-bg-2">
 		<div class="flex-grow flex items-center justify-center">
 			{@render children()}
 		</div>

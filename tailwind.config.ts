@@ -7,24 +7,24 @@ export default {
 		extend: {
 			colors: {
 				ui: {
-					// Backgrounds - Made darker
-					bg: '#030303',     // Darker main background
-					'bg-2': '#0A0A0A', // Darker secondary background
-					'bg-3': '#111111', // Darker tertiary background
+					// Backgrounds - Lightened for better contrast
+					bg: '#0A0A0A',     // Main background
+					'bg-2': '#0D0D0D', // Slightly lighter
+					'bg-3': '#101010', // Just a touch lighter
 					
-					// Text - Adjusted for contrast
-					tx: '#FFFFFF',     // Brighter main text for contrast
-					'tx-2': '#888888',
-					'tx-3': '#666666', //Darker than tx-2
-					'tx-h': '#BBBBBB', // Text for hovering (balanced between tx and tx-2)
-					'tx-subhead': '#E0E0E0', // slightly darker than white
+					// Text - Enhanced contrast
+					tx: '#FFFFFF',     // Main text
+					'tx-2': '#CCCCCC', // Secondary text (significantly lightened)
+					'tx-3': '#A3A3A3', // Tertiary text (lightened more)
+					'tx-h': '#E5E5E5', // Hover text (very light)
+					'tx-subhead': '#F0F0F0', // Subheadings (almost white)
 					
-					// Borders - Made more subtle
-					br: '#1A1A1A',     // Darker border
-					'br-h': '#242424', // Darker hover border
+					// Borders - More visible
+					br: '#2A2A2A',     // Border
+					'br-h': '#363636', // Hover border
 					
-					// Accent - Kept the same as requested
-					ac: '#FFFFFF',     // Original accent color
+					// Accent
+					ac: '#FFFFFF',     // Accent color
 				}
 			}
 		}
