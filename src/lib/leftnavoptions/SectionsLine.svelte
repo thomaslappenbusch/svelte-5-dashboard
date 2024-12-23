@@ -8,11 +8,19 @@
     
     // Generate route from section title and item title
     function generateRoute(sectionTitle: string, item: { title: string; totalNotifications: number }): string {
-        const baseRoute = sectionTitle.toLowerCase() === 'dashboard' 
-            ? '' 
-            : sectionTitle.toLowerCase().replace(' ', '-');
+        // Always start with /dashboard
+        const basePath = '/dashboard';
+        
+        // If section is Dashboard, only append the item route
+        if (sectionTitle.toLowerCase() === 'dashboard') {
+            const itemRoute = item.title.toLowerCase().replace(' ', '-');
+            return `${basePath}/${itemRoute}`;
+        }
+        
+        // For other sections, include both section and item in the route
+        const sectionRoute = sectionTitle.toLowerCase().replace(' ', '-');
         const itemRoute = item.title.toLowerCase().replace(' ', '-');
-        return `/${baseRoute}${baseRoute ? '/' : ''}${itemRoute}`;
+        return `${basePath}/${sectionRoute}/${itemRoute}`;
     }
     
     // Handle navigation

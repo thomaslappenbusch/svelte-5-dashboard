@@ -1,10 +1,8 @@
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 
-export const load: PageLoad = ({ params }) => {
+export const load: PageLoad = ({ params }:any) => {
     return {
         slug: params.slug
     };
-
-    error(404, 'Route Not found');
 };
