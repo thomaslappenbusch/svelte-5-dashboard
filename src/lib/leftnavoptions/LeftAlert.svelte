@@ -1,37 +1,34 @@
 <script lang="ts">
-    import { fly, fade } from "svelte/transition";
+    import { fly, fade, slide } from "svelte/transition";
     import { isNavOpen } from "../../stores/navigation";
+	import { removeAlert } from "../../stores/leftNavData";
 
     interface ComponentInterface {
         title?: string;
         leftIcon?: string;
         description?: string;
         size?: string;
-        id?: any;
+        id?: string;
+        index: any;
+        'on:close'?: (event: CustomEvent<{ id: string }>) => void;
     }
-
-    let props: ComponentInterface = $props();
-    let { title, leftIcon = "warning", description, size = "small", id } = props;
-
-    let isVisible = $state(true)
-    
-    function close() {
-
-    }
+    let { title, leftIcon , description, size , id, index }: ComponentInterface = $props();
 
 </script>
 
 {#if size === "small"}
-    {#if isVisible}
     <div 
+        transition:slide|local={{ duration: 300 }}
+    >
+        <div 
             class="h-12 group bg-ui-bg-3 rounded-md overflow-hidden relative flex justify-start items-center w-auto transition-transform duration-200 mb-3 {$isNavOpen ? 'hover:translate-x-2' : ''}"
-            transition:fly={{ duration: 200, x: -30 }}
+            transition:fade|local={{ duration: 200 }}
         >
             <div class="absolute left-0 bottom-0 h-full w-[2px] {leftIcon === 'warning' ? 'bg-red-600' : leftIcon === 'hazard' ? 'bg-yellow-500' : 'bg-zinc-500'}"></div>
             <!-- svelte-ignore a11y_consider_explicit_label -->
             <button 
                 class="absolute top-[2px] right-[2px]"
-                onclick={close}
+                onclick={() => removeAlert(index)}
             >
                 <svg class="text-ui-tx-3/20 group-hover:text-ui-tx-3 transition duration-200" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.758 17.243L12.001 12m5.243-5.243L12 12m0 0L6.758 6.757M12.001 12l5.243 5.243"/></svg>
             </button>
@@ -73,5 +70,5 @@
                 {/if}
             </div>
         </div>
-    {/if}
+    </div>
 {/if}
