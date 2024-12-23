@@ -14,27 +14,56 @@
 	import { flip } from 'svelte/animate';
 
 	let { children } = $props();
-
-	let items = $state([
-		{ id: 0, content: 'Block 1' },
-		{ id: 1, content: 'Block 2' },
-		{ id: 2, content: 'Block 3' }
-	])
 	
 	function deleteItem(id: number) {
 		leftNavData.alerts = leftNavData.alerts.filter(item => item.id !== id);
 	}
 
+	interface Alert {
+		id: number;
+		leftIcon: "avatar" | "warning" | "hazard";
+		size: "small";
+		title: string;
+		description: string;
+		interaction: string;
+	}
+
 	let leftNavData = $state({
-		title: "SvelteDash",
+		title: "Svelte5Dash",
 		sections: [
 			{
 				title: "Dashboard",
-				items: ["Overview", "Analytics", "Reports"]
+				items: [
+					{
+						title: "Overview",
+						totalNotifications: 3
+					},
+					{
+						title: "Analytics",
+						totalNotifications: 0
+					},
+					{
+						title: "Reports",
+						totalNotifications: 0
+					}
+				]
 			},
 			{
 				title: "System",
-				items: ["Performance", "Monitoring", "Logs"]
+				items: [
+					{
+						title: "Performance",
+						totalNotifications: 0
+					},
+					{
+						title: "Monitoring",
+						totalNotifications: 0
+					},
+					{
+						title: "Logs",
+						totalNotifications: 0
+					}
+				]
 			}
 		],
 		alerts: [
@@ -43,7 +72,8 @@
 				leftIcon: "avatar",
 				size: "small",
 				title: "Aspen Septimus",
-				description: "3 new messages. open chat"
+				description: "3 new messages.",
+				interaction: "open chat"
 			},
 			{
 				id:1,
@@ -62,7 +92,7 @@
 		],
 		profile: {
 			username: "George Costanza",
-			line: "Harvard 2023",
+			line: "WWU 2023",
 			statusColor: "bg-green-600"
 		}
 	});
@@ -74,19 +104,8 @@
 		transition-all duration-300 ease-out
 		${$isNavOpen ? 'w-72' : 'w-[74px] px-[12px]'}`}>        
 		<Title1 title={leftNavData.title}/>
-		<SectionsLine leftNavData={leftNavData.sections}/>
+		<SectionsLine data={leftNavData.sections}/>
 		<div class="flex-grow"></div>
-		<!-- <div class="flex flex-col w-full">
-			{#each $leftNavData.alerts as alert, index (index)}
-				<LeftAlert
-					leftIcon={alert.leftIcon}
-					size={alert.size}
-					title={alert.title}
-					description={alert.description}
-					index={index}
-				/>
-			{/each}
-		</div> -->
 		<div class="flex flex-col gap-4 w-full mb-3">
 			{#each leftNavData.alerts as item (item.id)}
 				<div 
@@ -138,20 +157,23 @@
 							<div 
 								in:fly={{ x: -5, duration: 100}}
 								out:fly={{ x: -5, duration: 100 }}
-								class="text-ui-tx-2 text-[11px] font-medium truncate line-clamp-1"
+								class="text-ui-tx-2 text-[11px] font-medium truncate line-clamp-1 mr-2"
 							>
-								{item.description}
+								{item.description} <button class="text-ui-tx-3 underline hover:text-ui-tx-h transition duration-100">{item.interaction} </button>
 							</div>
 						{/if}
 					</div>
-
 				</div>
 			{/each}
 		</div>
 		<Avatar data={leftNavData.profile}/>
 	</div>
 	<div class="flex justify-center flex-grow flex-col">
-		<div class="h-14 w-full border-b border-ui-br flex justify-end items-center"></div>
+		<div class="h-14 w-full border-b border-ui-br flex justify-end items-center">
+			<div class="flex justify-center items-center space-x-5">
+				<button></button>
+			</div>
+		</div>
 		<div class="flex-grow flex items-center justify-center">
 			{@render children()}
 		</div>

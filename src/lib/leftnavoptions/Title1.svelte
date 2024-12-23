@@ -20,12 +20,12 @@
 
 <div class="flex items-center justify-between h-[36px] mb-8 w-full">
     {#if $isNavOpen}
-        <div class="text-white text-3xl">{title}</div>
+        <div class="text-white text-2xl">{title}</div>
     {:else}
         <div></div>
     {/if}
     <!-- svelte-ignore a11y_consider_explicit_label -->
     <button onclick={toggleNav} class="text-xs group w-12 flex items-center justify-center">
-        <svg class={`text-ui-tx-2 group-hover:text-ui-tx transition-colors duration-500 ${$isNavOpen ? '' : 'rotate-180 scale-110'}`} xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m13.5 16l-4-4l4-4M5.4 3h13.2A2.4 2.4 0 0 1 21 5.4v13.2a2.4 2.4 0 0 1-2.4 2.4H5.4A2.4 2.4 0 0 1 3 18.6V5.4A2.4 2.4 0 0 1 5.4 3"/></svg>
+        <svg  class={`text-ui-tx-3 group-hover:text-ui-tx-2 transition-colors w-7 h-7 duration-500 border p-[3px] pl-[5px] rounded-md border-ui-br-h hover:border-ui-tx-3 ${$isNavOpen ? 'ml-5' : 'rotate-180 scale-110'}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M11.92 19.92L4 12l7.92-7.92l1.41 1.42l-5.5 5.5H22v2H7.83l5.51 5.5zM4 12V2H2v20h2z"/></svg>
     </button>
 </div>

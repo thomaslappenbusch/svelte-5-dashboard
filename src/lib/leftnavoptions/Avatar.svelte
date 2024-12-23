@@ -28,8 +28,8 @@
     <div class="relative h-12 w-12 flex-shrink-0">
         <img 
             alt="currentUser" 
-            src="https://avatars.githubusercontent.com/u/2" 
-            class="h-12 w-12 rounded-full border border-zinc-500"
+            src="https://avatars.githubusercontent.com/u/19" 
+            class="h-12 w-12 rounded-full border border-zinc-500 opacity-80"
         />
         {#if data.statusColor}
             <div class="absolute right-0 bottom-[2px] h-[10px] w-[10px] {data.statusColor} rounded-full"></div>
