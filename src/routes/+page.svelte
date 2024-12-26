@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { goto } from "$app/navigation";
+
 </script>
 
 <div class="flex flex-col bg-ui-bg overflow-hidden">
@@ -26,7 +28,7 @@
                     <div class="text-xs">BastionKit</div>
                 </div>
                 <div class="text-8xl font-semibold pb-2 bg-gradient-to-b from-white via-white to-zinc-100 bg-clip-text text-transparent -mt-[2px]">
-                    SvelteKit 5
+                    Svelte 5
                 </div>
                 <div class="text-5xl font-semibold bg-gradient-to-b from-zinc-100 via-zinc-100 to-zinc-600 pb-3 bg-clip-text text-transparent">
                     Dashboard Boilerplates
@@ -37,7 +39,7 @@
                             View Features
                         </div>
                     </button>
-                    <button class="px-6 py-2 border-2 border-zinc-500 hover:border-zinc-400 rounded-lg text-zinc-300 hover:text-white flex items-center hover:bg-zinc-950 transition duration-500 group relative overflow-hidden">
+                    <button onclick={() => goto("/dashboard")} class="px-6 py-2 border-2 border-zinc-500 hover:border-zinc-400 rounded-lg text-zinc-300 hover:text-white flex items-center hover:bg-zinc-950 transition duration-500 group relative overflow-hidden">
                         <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-tr from-zinc-500 to-gray-600 opacity-0 group-hover:opacity-60 h-8 w-8 blur-[20px] z-0 group-hover:w-full transition-all duration-500">
                         </div>
                         <div class="relative z-10 text-zinc-200 flex items-center font-medium">
