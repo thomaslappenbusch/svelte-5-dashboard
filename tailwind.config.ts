@@ -8,9 +8,9 @@ export default {
 			colors: {
 				ui: {
 					// Backgrounds - Lightened for better contrast
-					bg: '#0A0A0A',     // Main background
-					'bg-2': '#0D0D0D', // Slightly lighter
-					'bg-3': '#101010', // Just a touch lighter
+					bg: '#070707',     // Main background
+					'bg-2': '#0A0A0A', // Slightly lighter
+					'bg-3': '#0D0D0D', // Just a touch lighter
 					
 					// Text - Enhanced contrast
 					tx: '#FFFFFF',     // Main text

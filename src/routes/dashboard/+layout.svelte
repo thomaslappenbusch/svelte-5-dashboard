@@ -168,7 +168,7 @@
 		</div>
 		<Avatar data={leftNavData.profile}/>
 	</div>
-	<div class="flex justify-center flex-grow flex-col bg-ui-bg-2">
+	<div class="flex justify-center flex-grow flex-col bg-ui-bg">
 		<div class="flex-grow flex items-center justify-center">
 			{@render children()}
 		</div>

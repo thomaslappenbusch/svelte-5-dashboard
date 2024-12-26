@@ -21,7 +21,7 @@
             <div class="text-ui-tx-2 mb-1 text-sm">Email</div>
             <input
             bind:value={email}
-            class="border-ui-br bg-transparent border rounded-md w-full  focus:outline-none focus:border focus:border-ui-tx-3 transition duration-500 text-ui-tx px-2 py-1 placeholder-ui-br-h/50"
+            class="border-ui-br bg-transparent border rounded-md w-full  focus:outline-none focus:border focus:border-ui-tx-3 transition duration-100 text-ui-tx px-2 py-1 placeholder-ui-br"
             placeholder="Enter your email address"
             />
         </div>
@@ -39,7 +39,7 @@
             <input
             bind:value={confirmPassword}
             type="password"
-            class="border-ui-br bg-transparent border rounded-md w-full focus:outline-none focus:border focus:border-ui-tx-3 transition duration-500 text-ui-tx px-2 py-1"
+            class="border-ui-br bg-transparent border rounded-md w-full focus:outline-none focus:border focus:border-ui-tx-3 transition duration-100 text-ui-tx px-2 py-1"
             />
         </div>
         <div class="flex flex-col mt-3 w-full">
