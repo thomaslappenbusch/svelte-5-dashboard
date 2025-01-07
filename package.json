@@ -30,6 +30,8 @@
 		"vite": "^6.0.0"
 	},
 	"dependencies": {
+		"@supabase/ssr": "^0.5.2",
+		"@supabase/supabase-js": "^2.47.10",
 		"lucide-svelte": "^0.468.0"
 	}
 }

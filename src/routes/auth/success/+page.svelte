@@ -11,11 +11,11 @@
                 <path fill="rgb(34,197,94)" d="m9.55 18l-5.7-5.7l1.425-1.425L9.55 15.15l9.175-9.175L20.15 7.4z"/>
             </svg>
         </div>
-        <div class="text-3xl mb-4 text-ui-tx text-center">Account Created!</div>
-        <div class="text-ui-tx-2 text-center mb-8">Your account has been successfully created. You can now access your dashboard.</div>
+        <div class="text-3xl mb-4 text-ui-tx text-center ">Account Created!</div>
+        <div class="text-ui-tx-2 text-center mb-8">Your account has been successfully created. You can now access the dashboard.</div>
         <button 
             onclick={()=> goto("/dashboard")}
-            class="py-2 px-6 flex items-center justify-center border border-ui-br rounded-md text-ui-tx text-sm hover:bg-ui-bg-2 transition focus:outline-none focus:border focus:border-ui-tx-3">
+            class="py-2 px-6 flex items-center justify-center border border-ui-br rounded-md hover:text-ui-tx text-sm hover:bg-ui-bg-2 transition focus:outline-none focus:border hover:border-ui-tx-3 text-ui-tx-3">
             Continue to Dashboard
         </button>
     </div>

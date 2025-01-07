@@ -1,43 +1,56 @@
 <script lang="ts">
     import { goto } from "$app/navigation";
     import { page } from "$app/stores";
-
-    let { leftNavData } = $props();
+    import { fade, fly } from "svelte/transition";
+    import { isNavOpen } from "../../stores/navigation";
     
-    function generateRoute(sectionTitle: string, itemName: string): string {
-        const baseRoute = sectionTitle.toLowerCase() === 'dashboard' 
-            ? '' 
-            : sectionTitle.toLowerCase().replace(' ', '-');
-        const itemRoute = itemName.toLowerCase().replace(' ', '-');
-        return `/${baseRoute}${baseRoute ? '/' : ''}${itemRoute}`;
-    }
+    let { data } = $props();
+    
+    // Flatten all items into a single array
+    const allItems = data.flatMap((section: { items: any[]; }) => 
+        section.items.map((item: { title: string; }) => ({
+            ...item,
+            route: `/dashboard/${item.title.toLowerCase().replace(' ', '-')}`
+        }))
+    );
     
     function handleNavigation(route: string) {
         goto(route);
     }
+
 </script>
 
-{#each leftNavData as section, sectionIndex}
-    <div class={`text-sm mb-4 ${sectionIndex > 0 ? 'mt-6' : ''}`}>
-        <div class="text-ui-tx-subhead font-medium mb-2">
-            {section.title}
-        </div>
-        {#each section.items as text, itemIndex}
-            {@const route = generateRoute(section.title, text)}
+{#if $isNavOpen}
+    <div 
+        in:fly={{ x: -5, duration: 100}}
+        out:fly={{ x: -5, duration: 200 }}
+        class="w-full flex flex-col"
+    >
+        {#each allItems as item}
             <button 
-                class="group w-full text-left mb-1"
-                onclick={() => handleNavigation(route)}
+                class="group flex items-center justify-start w-full h-full transition-colors group relative group"
+                onclick={() => handleNavigation(item.route)}
             >
+                <div class="absolute right-4 z-[1] group-hover:opacity-100 opacity-0 transition duration-200 group-hover:translate-x-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="24" viewBox="0 0 12 24"><path fill="#fff" fill-rule="evenodd" d="M10.157 12.711L4.5 18.368l-1.414-1.414l4.95-4.95l-4.95-4.95L4.5 5.64l5.657 5.657a1 1 0 0 1 0 1.414"/></svg>
+                </div>
                 <div 
-                    class={`px-3 py-2 rounded-md transition-colors ${
-                        $page.url.pathname === route 
-                        ? 'bg-ui-bg-3 text-ui-ac' 
-                        : 'text-ui-tx-2 hover:bg-ui-bg-2 hover:text-ui-tx'
+                    class={`h-full w-[1px] transition-colors ${
+                        $page.url.pathname === item.route 
+                        ? 'bg-ui-ac' 
+                        : 'bg-ui-br group-hover:bg-ui-tx-h'
+                    }`}
+                ></div>
+                <div 
+                    class={`relative py-[7px] pl-3 flex-grow flex justify-between items-center transition-transform duration-200 ease-out ${
+                        $page.url.pathname === item.route
+                        ? 'text-ui-ac bg-ui-bg-3'
+                        : 'text-ui-tx-2 group-hover:text-ui-tx-h group-hover:translate-x-1'
                     }`}
                 >
-                    {text}
+                    <span>{item.title}</span>
                 </div>
             </button>
         {/each}
     </div>
-{/each}
+{/if}
