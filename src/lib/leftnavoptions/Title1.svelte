@@ -23,25 +23,21 @@
     let { title } = props;
 </script>
 
-<div class="flex items-center justify-between h-[34px] w-full">
+<div class="flex items-center justify-between h-[34px] w-full relative">
     {#if $isNavOpen}
         <div 
-            in:fly={{ x: -5, duration: 100, delay: 50}}
-            out:fly={{ x: -5, duration: 100 }}  
-            class="flex items-center justify-center"
+            in:fly={{ x: -1, duration: 100}}
+            out:fly={{ x: -5, duration: 50 }}  
+            class="flex items-center justify-center absolute left-0"
         >
-            {#if title.logo}
-                <div class="h-8 w-8 border border-ui-br mr-2 rounded-md flex items-center justify-center">
-                    <svg class="text-cyan-400 p-[2px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path fill="currentColor" d="M230 40a6 6 0 0 1-6 6H56a6 6 0 0 1 0-12h168a6 6 0 0 1 6 6m-48 32a6 6 0 0 0-6-6H32a6 6 0 0 0 0 12h144a6 6 0 0 0 6-6m-16 32a6 6 0 0 0-6-6H56a6 6 0 0 0 0 12h104a6 6 0 0 0 6-6m16 32a6 6 0 0 0-6-6H88a6 6 0 0 0 0 12h88a6 6 0 0 0 6-6m2 26h-64a6 6 0 0 0 0 12h64a6 6 0 0 0 0-12m-24 32h-32a6 6 0 0 0 0 12h32a6 6 0 0 0 0-12m-32 32h-16a6 6 0 0 0 0 12h16a6 6 0 0 0 0-12"/></svg>
-                </div>
-            {/if}
-            <div class="text-white font-medium text-xl">
-                TailwindBG
+            <div class="text-white font-medium text-xl pointer-events-none">
+                SvelteDashboard
             </div>
         </div>
     {:else}
         <div></div>
     {/if}
+    <div></div>
     <!-- svelte-ignore a11y_consider_explicit_label -->
     <button 
         onclick={toggleNav} 
