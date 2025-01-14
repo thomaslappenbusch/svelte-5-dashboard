@@ -2,7 +2,7 @@
 
 A powerful, customizable dashboard template built with modern technologies. Perfect for building your next admin panel, analytics dashboard, or SaaS platform.
 
-Join our growing community on [Discord](https://discord.gg/fB5uJYYD8E) for support, feature discussions, and updates!
+Join our growing community on [Discord](https://discord.gg/fB5uJYYD8E) for support, feature discussions, and updates! Also visit [Coastal UI](https://coastalui.com) to learn more about the components and such we work on.
 
 ## Tech Stack
 
