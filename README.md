@@ -1,4 +1,4 @@
-# Coastal UI - svelte-5-dashboard
+# svelte-5-dashboard - A Coastal UI boilerplate
 
 A powerful, customizable dashboard template built with modern technologies. Perfect for building your next admin panel, analytics dashboard, or SaaS platform.
 
