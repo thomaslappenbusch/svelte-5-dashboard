@@ -1,17 +1,9 @@
-import type { LayoutServerLoad } from './$types';
-import { supabase } from '$lib/supabase';
+import type { LayoutServerLoad } from './$types'
 
-export const load: LayoutServerLoad = async () => {
-    const { data: { session }, error } = await supabase.auth.getSession();
-    console.log('Root layout server session check:', session?.user);
-    
-    return {
-        session,
-        userData: {
-            email: session?.user?.email,
-            id: session?.user?.id,
-            lastSignIn: session?.user?.last_sign_in_at,
-            created: session?.user?.created_at
-        }
-    };
-};
+export const load: LayoutServerLoad = async ({ locals: { safeGetSession }, cookies }) => {
+  const { session } = await safeGetSession()
+  return {
+    session,
+    cookies: cookies.getAll(),
+  }
+}

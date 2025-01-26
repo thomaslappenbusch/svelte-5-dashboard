@@ -1,26 +1,31 @@
-import { fail, redirect } from '@sveltejs/kit';
-import type { Actions } from './$types';
-import { supabase } from '$lib/supabase';
+import { fail, redirect, type Actions } from '@sveltejs/kit'
 
-export const actions = {
-    login: async ({ request }) => {
-        const formData = await request.formData();
-        const email = String(formData.get('email'));
-        const password = String(formData.get('password'));
+export const actions: Actions = {
+// eg for signup
+//   signup: async ({ request, locals: { supabase } }) => {
+//     const formData = await request.formData()
+//     const email = formData.get('email') as string
+//     const password = formData.get('password') as string
 
-        console.log('Attempting login with:', email); // Log the attempt
+//     const { error } = await supabase.auth.signUp({ email, password })
+//     if (error) {
+//       console.error(error)
+//       redirect(303, '/auth/error')
+//     } else {
+//       redirect(303, '/')
+//     }
+//   },
 
-        const { data, error } = await supabase.auth.signInWithPassword({
-            email,
-            password
-        });
+  login: async ({ request, locals: { supabase } }) => {
+    const formData = await request.formData()
+    const email = formData.get('email') as string
+    const password = formData.get('password') as string
 
-        console.log('Login response:', { data, error }); // Log the response
-
-        if (error) {
-            return fail(400, { message: error.message });
-        }
-
-        throw redirect(303, '/dashboard');
+    const { error } = await supabase.auth.signInWithPassword({ email, password })
+    if (error) {
+        return fail(400, { message: error.message });
     }
-} satisfies Actions;
+
+    throw redirect(303, '/dashboard');
+  },
+}

@@ -1,26 +1,23 @@
-<script lang="ts">
+<script>
 	import '../app.css';
+	import { goto, invalidate } from '$app/navigation';
+	import { onMount } from 'svelte';
 
-	let { children, data } = $props<{
-        children: any;
-        data: {
-            session: any;
-            userData: {
-                email: string | undefined;
-                id: string | undefined;
-                lastSignIn: string | undefined;
-                created: string | undefined;
-            }
-        }
-    }>();
+	let { data, children } = $props();
+	let { session, supabase, url, user } = $derived(data);
 
-    $effect(() => {
-        console.log('Current user data:', {
-            session: data.session,
-            userData: data.userData
-        });
-    });
+	onMount(() => {
+		const { data } = supabase.auth.onAuthStateChange((event, newSession) => {
+			console.log('onAuthStateChange', event, newSession);
 
+			if (newSession?.expires_at !== session?.expires_at) {
+				invalidate('supabase:auth');
+				console.log('invalidate supabase:auth');
+			}
+		});
+
+		return () => data.subscription.unsubscribe();
+	});
 </script>
 
 {@render children()}

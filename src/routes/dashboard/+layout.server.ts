@@ -1,19 +1,3 @@
-import type { LayoutServerLoad } from './$types';
-import { supabase } from '$lib/supabase';
-
-export const load = (async ({ depends }) => {
-    // Tell Svelte to re-run this load function when auth changes
-    depends('supabase:auth');
-
-    const { data: { session }, error } = await supabase.auth.getSession();
-    
-    return {
-        session,
-        userData: {
-            email: session?.user?.email,
-            id: session?.user?.id,
-            lastSignIn: session?.user?.last_sign_in_at,
-            created: session?.user?.created_at
-        }
-    };
-}) satisfies LayoutServerLoad;
+// To ensure that hooks.server.ts runs for every nested path, put a +layout.server.ts file 
+// in the private directory. This file can be empty, but must exist to protect 
+// routes that don't have their own +layout|page.server.ts.
